@@ -1,6 +1,6 @@
 ---
 # DEFAULT LEGACY FIPS FUTURE
-crypto_policy: 'FUTURE'
+crypto_policy: 'FIPS'
 
 allow_tcp_forwarding: 'no'
 allow_agent_forwarding: 'no'
