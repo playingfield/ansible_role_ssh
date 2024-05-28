@@ -15,6 +15,12 @@
   ansible.builtin.set_fact:
     distro_version: "{{ ansible_distribution }}{{ ansible_distribution_major_version }}"
 
+- name: Update GPG keys
+  when: ansible_distribution == 'AlmaLinux'
+  ansible.builtin.package:
+    name: almalinux-release
+    state: latest
+
 - name: Install SSH server
   ansible.builtin.package:
     name: openssh-server
