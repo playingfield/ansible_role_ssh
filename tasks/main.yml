@@ -3,6 +3,9 @@
 - name: Setup
   ansible.builtin.setup:
 
+- name: List packages
+  ansible.builtin.package_facts:
+
 - name: Print out operating system details
   ansible.builtin.debug:
     msg: >-
@@ -22,6 +25,7 @@
     state: latest
 
 - name: Install SSH server
+  when: "'openssh-server' not in ansible_facts.packages"
   ansible.builtin.package:
     name: openssh-server
     state: present
