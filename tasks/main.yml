@@ -113,6 +113,7 @@
     mode: 0644
 
 - name: Manage ed25519 host key
+  when: crypto_policy == 'STRICT'
   block:
     - name: Check the ed25519 host key
       ansible.builtin.stat:
@@ -142,7 +143,6 @@
         mode: 0600
         state: present
       notify: Restart sshd
-  when: crypto_policy == 'STRICT'
 
 - name: Disable weak host keys
   when:
